@@ -35,4 +35,18 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Integrate sanity
 
+### Integrate sanity
+
 ./node_modules/.bin/sanity init --coupon javascriptmastery2022
+
+### Show docs
+
+./node_modules/.bin/sanity docs
+
+### Manage the project
+
+./node_modules/.bin/sanity manage
+
+### Start the project
+
+cd ./ecommerce && ../node_modules/.bin/sanity start
