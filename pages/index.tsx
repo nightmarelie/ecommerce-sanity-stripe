@@ -29,7 +29,6 @@ const Home: FC<Props> = ({ products, banners }) => {
         ))}
       </div>
       <FooterBanner {...(banners[0] ?? {})} />
-      <Footer />
     </>
   );
 };
