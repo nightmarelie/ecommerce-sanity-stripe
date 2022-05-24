@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import {
   HeroBanner,
   Product,
-  Footer,
   ProductProps,
   BannerProps,
   FooterBanner,
@@ -24,8 +23,8 @@ const Home: FC<Props> = ({ products, banners }) => {
         <p>Speakers of many variations</p>
       </div>
       <div className="products-container">
-        {products.map((p, idx) => (
-          <Product key={idx} {...p} />
+        {products.map((item) => (
+          <Product key={item._id} {...item} />
         ))}
       </div>
       <FooterBanner {...(banners[0] ?? {})} />

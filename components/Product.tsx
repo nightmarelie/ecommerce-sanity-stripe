@@ -3,7 +3,8 @@ import Link from "next/link";
 import { urlFor } from "../lib/client";
 
 export type Props = {
-  image: any;
+  _id: string;
+  image: any[];
   name: "string";
   slug: { current: "string" };
   price: number;
