@@ -1,11 +1,18 @@
 import React, { FC } from "react";
-import { HeroBanner, Product, Footer, ProductProps } from "../components";
+import {
+  HeroBanner,
+  Product,
+  Footer,
+  ProductProps,
+  BannerProps,
+  FooterBanner,
+} from "../components";
 
 import { client } from "../lib/client";
 
 type Props = {
   products: ProductProps[];
-  banners: any[];
+  banners: BannerProps[];
 };
 
 const Home: FC<Props> = ({ products, banners }) => {
@@ -21,6 +28,7 @@ const Home: FC<Props> = ({ products, banners }) => {
           <Product key={idx} {...p} />
         ))}
       </div>
+      <FooterBanner {...(banners[0] ?? {})} />
       <Footer />
     </>
   );
