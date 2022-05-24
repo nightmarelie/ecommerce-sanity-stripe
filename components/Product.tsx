@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-type Props = {
+export type Props = {
   image: any;
   name: "string";
   slug: "string";
