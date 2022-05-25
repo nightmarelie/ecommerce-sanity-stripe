@@ -9,6 +9,7 @@ export type Props = {
   slug: { current: "string" };
   price: number;
   details: string;
+  quantity: number;
 };
 
 export const Product: FC<Props> = ({ name, slug, image, price }) => {
