@@ -13,6 +13,7 @@ type Product = {
   name: string;
   price: number;
   quantity: number;
+  image: any[];
 };
 
 type StateContext = {
