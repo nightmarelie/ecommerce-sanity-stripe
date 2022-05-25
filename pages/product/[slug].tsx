@@ -7,6 +7,7 @@ import {
 } from "react-icons/ai";
 
 import { client, urlFor } from "../../lib/client";
+import { useStateContext } from "../../context/StateContext";
 
 import { Product, ProductProps } from "../../components";
 
@@ -18,6 +19,8 @@ type Props = {
 const ProductDetails: FC<Props> = ({ product, products }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
+
+  const { qty, incQty, decQty } = useStateContext();
 
   return (
     <div>
@@ -61,11 +64,11 @@ const ProductDetails: FC<Props> = ({ product, products }) => {
           <div className="quantity">
             <h3>Quantity:</h3>
             <p className="quantity-desc">
-              <span className="minus" onClick={() => null}>
+              <span className="minus" onClick={() => decQty()}>
                 <AiOutlineMinus />
               </span>
-              <span className="num">{1}</span>
-              <span className="plus" onClick={() => null}>
+              <span className="num">{qty}</span>
+              <span className="plus" onClick={() => incQty()}>
                 <AiOutlinePlus />
               </span>
             </p>

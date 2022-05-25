@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import { Toaster } from "react-hot-toast";
 import type { AppProps } from "next/app";
 
-import { StateContext } from "../context/StateContext.jsx";
+import { StateContext } from "../context/StateContext";
 
 import { Layout } from "../components";
 
