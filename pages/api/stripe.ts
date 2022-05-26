@@ -3,7 +3,7 @@ import Stripe from "stripe";
 import { getErrorMsg } from "../../lib/error-helper";
 
 const stripe = new Stripe(
-  process.env.NEX_PUBLIC_STRIPE_SECRET_KEY!,
+  process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY!,
   {} as Stripe.StripeConfig
 );
 
@@ -29,7 +29,7 @@ export default async function handler(
         mode: "payment",
         payment_method_types: ["card"],
         billing_address_collection: "auto",
-        line_items: req.body.cartItemsmap((item: Item) => {
+        line_items: req.body.map((item: Item) => {
           const newImg = item.image[0].asset._ref
             .replace(
               "image-",
@@ -39,12 +39,12 @@ export default async function handler(
 
           return {
             price_data: {
-              currency: "usd",
+              currency: "cad",
               product_data: {
                 name: item.name,
                 images: [newImg],
               },
-              price_amount: item.price * 100,
+              unit_amount: item.price * 100,
             },
             adjustable_quantity: {
               enabled: true,
@@ -53,10 +53,7 @@ export default async function handler(
             quantity: item.quantity,
           };
         }),
-        shipping_rates: [
-          "shr_1L3nNkAK6DJMlm2p77gP9kcV",
-          "shr_1L3nPvAK6DJMlm2pipkrGMtf",
-        ],
+        shipping_rates: ["shr_1L3nNkAK6DJMlm2p77gP9kcV"],
         success_url: `${req.headers.origin}/?success=true`,
         cancel_url: `${req.headers.origin}/?canceled=true`,
       });
