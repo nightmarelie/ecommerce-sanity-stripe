@@ -54,8 +54,8 @@ export default async function handler(
           };
         }),
         shipping_rates: ["shr_1L3nNkAK6DJMlm2p77gP9kcV"],
-        success_url: `${req.headers.origin}/?success=true`,
-        cancel_url: `${req.headers.origin}/?canceled=true`,
+        success_url: `${req.headers.origin}/success`,
+        cancel_url: `${req.headers.origin}/`,
       });
 
       res.status(200).json(session);
