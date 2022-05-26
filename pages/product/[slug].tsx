@@ -20,7 +20,12 @@ const ProductDetails: FC<Props> = ({ product, products }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
 
-  const { qty, incQty, decQty, onAdd } = useStateContext();
+  const { qty, incQty, decQty, onAdd, setShowCart } = useStateContext();
+
+  const handleByNow = () => {
+    onAdd(product, qty);
+    setShowCart(true);
+  };
 
   return (
     <div>
@@ -81,7 +86,11 @@ const ProductDetails: FC<Props> = ({ product, products }) => {
             >
               Add to Cart
             </button>
-            <button type="button" className="buy-now" onClick={() => null}>
+            <button
+              type="button"
+              className="buy-now"
+              onClick={() => handleByNow()}
+            >
               Buy Now
             </button>
           </div>
