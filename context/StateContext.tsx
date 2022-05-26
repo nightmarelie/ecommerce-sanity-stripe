@@ -43,6 +43,7 @@ export const StateContext: FC<any> = ({ children }) => {
   const [qty, setQty] = useState(1);
 
   let foundProduct: Product;
+  let index;
 
   const isProduct = (p: Product | undefined): p is Product => {
     return (p as Product)._id !== undefined;
@@ -101,7 +102,8 @@ export const StateContext: FC<any> = ({ children }) => {
     value
   ) => {
     foundProduct = cartItems.find((item) => item._id === id) || ({} as Product);
-    const newCartItems: Product[] = cartItems.filter((item) => item._id !== id);
+    index = cartItems.findIndex((product) => product._id === id);
+    const newCartItems: Product[] = cartItems.splice(index, 1);
 
     if (value === "inc" && newCartItems) {
       setCartItems([
